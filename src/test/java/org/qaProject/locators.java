@@ -1,5 +1,6 @@
 package org.qaProject;
 
+import org.junit.jupiter.api.DisplayName;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -17,7 +18,7 @@ public class locators {
     //WebDriver driver = new FirefoxDriver();
 
     @BeforeTest
-    public void setup(){
+    public void setUp(){
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         driver.get("https://rahulshettyacademy.com/locatorspractice/");
         driver.manage().deleteAllCookies();
@@ -30,6 +31,7 @@ public class locators {
     }
 
     @Test
+    @DisplayName("Criando um login e testando na aplicação")
     public void creatingUserTest() throws InterruptedException {
         Util.inputText(driver.findElement(By.id("inputUsername")),"Gustavo");
         Util.inputText(driver.findElement(By.name("inputPassword")),"123");
@@ -53,6 +55,7 @@ public class locators {
     }
 
     @Test
+    @DisplayName("Validando Login e Logout")
     public void loginLogoutTest() throws InterruptedException {
         String username = "Gustavo";
         Util.inputText(driver.findElement(By.id("inputUsername")),username);
