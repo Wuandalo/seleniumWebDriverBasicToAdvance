@@ -1,7 +1,5 @@
 package org.qaProject;
 
-import org.junit.After;
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -11,9 +9,7 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-import static org.junit.Assert.assertTrue;
-
-public class handlingAlertMessages {
+public class HandlingAlertMessages {
 
     private WebDriver driver;
 
@@ -27,7 +23,7 @@ public class handlingAlertMessages {
     }
 
     @AfterTest
-    public void tearDown(){
+    public void tearDown() {
         driver.quit();
     }
 

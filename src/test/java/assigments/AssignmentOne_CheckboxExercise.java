@@ -3,7 +3,6 @@ package assigments;
 import org.junit.jupiter.api.DisplayName;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -14,7 +13,7 @@ import java.time.Duration;
 import static org.testng.AssertJUnit.assertFalse;
 import static org.testng.AssertJUnit.assertTrue;
 
-public class assignmentOne_CheckboxExercise {
+public class AssignmentOne_CheckboxExercise {
 
     WebDriver driver = new ChromeDriver();
 
@@ -35,11 +34,10 @@ public class assignmentOne_CheckboxExercise {
     @DisplayName("Selecionando o Checkbox, verificando se está selecionado, removendo e validando o oposto e depois contando a quantidade de checkboxs na página")
     public void checkBoxSubmissiion() {
 
-        WebElement checkbox1 = driver.findElement(By.cssSelector("#checkBoxOption1"));
-        checkbox1.click();
-        assertTrue(checkbox1.isSelected());
-        checkbox1.click();
-        assertFalse(checkbox1.isSelected());
+        driver.findElement(By.cssSelector("#checkBoxOption1")).click();
+        assertTrue(driver.findElement(By.cssSelector("#checkBoxOption1")).isSelected());
+        driver.findElement(By.cssSelector("#checkBoxOption1")).click();
+        assertFalse(driver.findElement(By.cssSelector("#checkBoxOption1")).isSelected());
         System.out.println(driver.findElements(By.xpath("//*[@type='checkbox']")).size());
 
     }

@@ -12,7 +12,7 @@ import java.time.Duration;
 
 import static org.testng.AssertJUnit.assertEquals;
 
-public class locators {
+public class Locators {
 
     WebDriver driver = new ChromeDriver();
     //WebDriver driver = new EdgeDriver();

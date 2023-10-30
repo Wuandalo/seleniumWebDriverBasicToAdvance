@@ -16,7 +16,7 @@ import java.util.List;
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
 
-public class e2e {
+public class E2eFlightTicket {
 
     private WebDriver driver;
 

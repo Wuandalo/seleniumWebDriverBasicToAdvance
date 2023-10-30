@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class assignmentTwo_UiValidations {
+public class AssignmentTwo_UiValidations {
 
     private WebDriver driver = new ChromeDriver();
 
@@ -28,7 +28,7 @@ public class assignmentTwo_UiValidations {
     }
 
     @Test
-    public void fillingProtactorTutorial() throws InterruptedException {
+    public void fillingProtractorTutorial() throws InterruptedException {
         driver.findElement(By.name("name")).sendKeys("Gustavo");
         driver.findElement(By.name("email")).sendKeys("email@email.com");
         driver.findElement(By.id("exampleInputPassword1")).sendKeys("password");

@@ -15,7 +15,7 @@ import java.util.List;
 
 import static org.testng.AssertJUnit.*;
 
-public class handlingdropdowns {
+public class Handlingdropdowns {
 
     private WebDriver driver;
 
