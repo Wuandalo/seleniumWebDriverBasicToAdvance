@@ -21,7 +21,7 @@ public class TypesOfWait {
     private WebDriver driver;
 
     @BeforeMethod
-    public void setUp(){
+    public void setUp() {
         driver = new ChromeDriver();
         driver.get("https://the-internet.herokuapp.com/dynamic_loading/1");
         driver.manage().deleteAllCookies();
@@ -29,12 +29,12 @@ public class TypesOfWait {
     }
 
     @AfterMethod
-    public void tearDown(){
+    public void tearDown() {
         driver.quit();
     }
 
     @Test
-    public void clickingWithImplicitWait(){
+    public void clickingWithImplicitWait() {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         driver.findElement(By.xpath("//div[@id='start']/button")).click();
         driver.findElement(By.xpath("//div[@id='finish']/h4")).click();
@@ -42,7 +42,7 @@ public class TypesOfWait {
     }
 
     @Test
-    public void clickingWithExplicitWait(){
+    public void clickingWithExplicitWait() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         driver.findElement(By.xpath("//div[@id='start']/button")).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='finish']/h4")));
@@ -50,7 +50,7 @@ public class TypesOfWait {
     }
 
     @Test
-    public void clickingWithFluentWait(){
+    public void clickingWithFluentWait() {
 
         driver.findElement(By.xpath("//div[@id='start']/button")).click();
         Wait<WebDriver> fluentWait = new FluentWait<>(driver)
@@ -61,9 +61,9 @@ public class TypesOfWait {
         WebElement helloWorld = fluentWait.until(new Function<WebDriver, WebElement>() {
             public WebElement apply(WebDriver driver) {
                 WebElement element = driver.findElement(By.xpath("//div[@id='finish']/h4"));
-                if (element.isDisplayed()){
+                if (element.isDisplayed()) {
                     return element;
-                }else{
+                } else {
                     return null;
                 }
             }

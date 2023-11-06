@@ -7,7 +7,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.qaProject.Util;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -21,7 +20,7 @@ public class AssignmentThree_SyncronizationWithExplicitWait {
     WebDriverWait wait;
 
     @BeforeMethod
-    public void setUp(){
+    public void setUp() {
         driver = new ChromeDriver();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.get("https://rahulshettyacademy.com/loginpagePractise/");
@@ -31,12 +30,12 @@ public class AssignmentThree_SyncronizationWithExplicitWait {
     }
 
     @AfterMethod
-    public void tearDown(){
+    public void tearDown() {
         driver.quit();
     }
 
     @Test
-    public void addingItensToCard(){
+    public void addingItensToCard() {
         String username = "rahulshettyacademy";
         String password = "learning";
 
@@ -53,15 +52,12 @@ public class AssignmentThree_SyncronizationWithExplicitWait {
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h1[text()='Shop Name']")));
         List<WebElement> itens = driver.findElements(By.xpath("//button[@class='btn btn-info']"));
-        for(WebElement item:itens){
+        for (WebElement item : itens) {
             item.click();
         }
         driver.findElement(By.xpath("//a[contains(@class,'btn-primary')]")).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("btn-success")));
     }
-
-
-
 
 
 }

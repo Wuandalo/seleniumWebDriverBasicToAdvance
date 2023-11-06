@@ -24,7 +24,7 @@ public class Locators {
     @BeforeMethod
     public void setUp() {
         driver = new ChromeDriver();
-        wait = new WebDriverWait(driver,Duration.ofSeconds(10));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         driver.get("https://rahulshettyacademy.com/locatorspractice/");
         driver.manage().deleteAllCookies();
@@ -60,7 +60,7 @@ public class Locators {
         driver.findElement(By.className("go-to-login-btn")).click();
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[contains(@class,'overlay-left')]/h1")));
 
-        Util.inputText( driver.findElement(By.id("inputUsername")),username);
+        Util.inputText(driver.findElement(By.id("inputUsername")), username);
         Util.inputText(driver.findElement(By.name("inputPassword")), password);
 
         driver.findElement(By.xpath("//input[@value='agreeTerms']")).click();

@@ -44,7 +44,7 @@ public class AddingItensToCard {
     @BeforeMethod
     public void setUp() {
         driver = new ChromeDriver();
-        wait = new WebDriverWait(driver,Duration.ofSeconds(15));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         driver.get("https://rahulshettyacademy.com/seleniumPractise/#/");
         driver.manage().deleteAllCookies();
@@ -87,8 +87,7 @@ public class AddingItensToCard {
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.className("promoInfo"))));
         assertEquals("10%", driver.findElement(By.xpath("//span[@class='discountPerc']")).getText());
         discountPrice = totalPrice * (1 - (10 / 100.0));
-        assertEquals(discountPrice, Double.parseDouble(driver.findElement(By.xpath("//span[@class='discountAmt']")).getText()),0.01);
-
+        assertEquals(discountPrice, Double.parseDouble(driver.findElement(By.xpath("//span[@class='discountAmt']")).getText()), 0.01);
     }
 
 }
