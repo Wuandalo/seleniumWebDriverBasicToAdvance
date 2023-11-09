@@ -1,4 +1,4 @@
-package org.qaProject;
+package examples;
 
 import org.openqa.selenium.WebElement;
 

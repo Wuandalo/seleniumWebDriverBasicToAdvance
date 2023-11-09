@@ -38,7 +38,7 @@ public class AssignmentFive_FramesHandling {
     }
 
     @Test
-    public void seila(){
+    public void seila() {
         driver.findElement(By.linkText("Nested Frames")).click();
         driver.switchTo().frame(driver.findElement(By.cssSelector("frame[name='frame-top']")));
         driver.switchTo().frame(driver.findElement(By.cssSelector("frame[name='frame-middle']")));

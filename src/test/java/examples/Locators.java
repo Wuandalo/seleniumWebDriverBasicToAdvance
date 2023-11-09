@@ -1,4 +1,4 @@
-package org.qaProject;
+package examples;
 
 import org.junit.jupiter.api.DisplayName;
 import org.openqa.selenium.By;
