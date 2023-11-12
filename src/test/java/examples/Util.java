@@ -1,10 +1,15 @@
 package examples;
 
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 
 public class Util {
@@ -20,8 +25,9 @@ public class Util {
         }
     }
 
-    public static void scrowDownTo(WebElement element, WebDriver driver){
+    public static void scrowDownTo(WebElement element, WebDriver driver) throws InterruptedException {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+        Thread.sleep(2000);
     }
 
     static void selectDay(String sDay, List<WebElement> oDays) {
@@ -40,11 +46,12 @@ public class Util {
         }
     }
 
-    public static void selectMonth(WebElement eCurrentMonth, WebElement eNextMonth,String sMonth) {
+    public static void selectMonth(WebElement eCurrentMonth, WebElement eNextMonth,String sMonth) throws InterruptedException {
         boolean bMonthFound = false;
-        for(int i=0; i<11; i++) {
+        for(int i=0; i<=11; i++) {
             if(!eCurrentMonth.getText().contains(sMonth)){
                 eNextMonth.click();
+                Thread.sleep(500);
             }else{
                 bMonthFound = true;
                 break;
@@ -52,15 +59,16 @@ public class Util {
         }
 
         if(!bMonthFound){
-            Assert.fail("Month "+ bMonthFound +" wasn't found");
+            Assert.fail("Month "+ sMonth +" wasn't found");
         }
     }
 
-    public static void selectYear(WebElement eCurrentYear, String sYear, WebElement eNextYear) {
-        boolean bYearFound = false;
+    public static void selectYear(WebDriver driver, String sYear, WebElement eNextYear) {
 
+        boolean bYearFound = false;
         for (int i=0;i<20;i++){
-            if(!eCurrentYear.getText().equals(sYear)){
+            String sCurrentYear = driver.findElement(By.xpath("//span[@class='flatpickr-day ']")).getAttribute("aria-label");
+            if(!sCurrentYear.contains(sYear)){
                 eNextYear.click();
             }else{
                 bYearFound = true;
@@ -69,7 +77,7 @@ public class Util {
         }
 
         if(!bYearFound){
-            Assert.fail("Year "+ bYearFound +" wasn't found");
+            Assert.fail("Year "+ sYear +" wasn't found");
         }
     }
 

@@ -32,11 +32,11 @@ public class CalendarHandling {
 
     @AfterMethod
     public void tearDown() {
-        //driver.quit();
+        driver.quit();
     }
 
     @Test
-    public void gettingTheRightDateOnTheCalendar(){
+    public void gettingTheRightDateOnTheCalendar() throws InterruptedException {
 
         String sYear = "2030";
         String sMonth = "October";
@@ -44,20 +44,19 @@ public class CalendarHandling {
 
         Util.scrowDownTo(driver.findElement(By.xpath("//div[@data-id='7a51525']")), driver);
         wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.id("form-field-travel_comp_date"))));
-        driver.findElement(By.id("form-field-travel_comp_date")).click();
-
-        List<WebElement> days = driver.findElements(By.xpath("//span[@class='flatpickr-day ']"));
-        Util.selectDay(sDay,days);
 
         driver.findElement(By.id("form-field-travel_comp_date")).click();
-        WebElement eCurrentMonth = driver.findElement(By.cssSelector(".flatpickr-current-month"));
+        WebElement eCurrentMonth = driver.findElement(By.cssSelector(".flatpickr-month"));
         WebElement eNextMonth = driver.findElement(By.cssSelector(".flatpickr-next-month"));
         Util.selectMonth(eCurrentMonth,eNextMonth,sMonth);
 
         driver.findElement(By.id("form-field-travel_comp_date")).click();
         WebElement eNextYear = driver.findElement(By.cssSelector(".arrowUp"));
-        WebElement eCurrentYear = driver.findElement(By.xpath("//input[@class='numInput cur-year']"));
-        Util.selectYear(eCurrentYear, sYear, eNextYear);
+        Util.selectYear(driver, sYear, eNextYear);
+
+        driver.findElement(By.id("form-field-travel_comp_date")).click();
+        List<WebElement> days = driver.findElements(By.xpath("//span[@class='flatpickr-day ']"));
+        Util.selectDay(sDay,days);
 
     }
 
