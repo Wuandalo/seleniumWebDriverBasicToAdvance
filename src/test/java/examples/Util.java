@@ -5,11 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
 import java.util.List;
 
 public class Util {
@@ -25,59 +21,59 @@ public class Util {
         }
     }
 
-    public static void scrowDownTo(WebElement element, WebDriver driver) throws InterruptedException {
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+    public static void scrowDownTo(int iQtity, WebDriver driver) throws InterruptedException {
+        ((JavascriptExecutor) driver).executeScript("window.scrollBy(0," + iQtity + ")");
         Thread.sleep(2000);
     }
 
     static void selectDay(String sDay, List<WebElement> oDays) {
         boolean bDayFound = false;
 
-        for(WebElement day:oDays){
-            if (day.getText().equals(sDay)){
+        for (WebElement day : oDays) {
+            if (day.getText().equals(sDay)) {
                 day.click();
                 bDayFound = true;
                 break;
             }
         }
 
-        if(!bDayFound){
-            Assert.fail("Day "+ sDay +" wasn't found");
+        if (!bDayFound) {
+            Assert.fail("Day " + sDay + " wasn't found");
         }
     }
 
-    public static void selectMonth(WebElement eCurrentMonth, WebElement eNextMonth,String sMonth) throws InterruptedException {
+    public static void selectMonth(WebElement eCurrentMonth, WebElement eNextMonth, String sMonth) throws InterruptedException {
         boolean bMonthFound = false;
-        for(int i=0; i<=11; i++) {
-            if(!eCurrentMonth.getText().contains(sMonth)){
+        for (int i = 0; i <= 11; i++) {
+            if (!eCurrentMonth.getText().contains(sMonth)) {
                 eNextMonth.click();
                 Thread.sleep(500);
-            }else{
+            } else {
                 bMonthFound = true;
                 break;
             }
         }
 
-        if(!bMonthFound){
-            Assert.fail("Month "+ sMonth +" wasn't found");
+        if (!bMonthFound) {
+            Assert.fail("Month " + sMonth + " wasn't found");
         }
     }
 
     public static void selectYear(WebDriver driver, String sYear, WebElement eNextYear) {
 
         boolean bYearFound = false;
-        for (int i=0;i<20;i++){
+        for (int i = 0; i < 20; i++) {
             String sCurrentYear = driver.findElement(By.xpath("//span[@class='flatpickr-day ']")).getAttribute("aria-label");
-            if(!sCurrentYear.contains(sYear)){
+            if (!sCurrentYear.contains(sYear)) {
                 eNextYear.click();
-            }else{
+            } else {
                 bYearFound = true;
                 break;
             }
         }
 
-        if(!bYearFound){
-            Assert.fail("Year "+ sYear +" wasn't found");
+        if (!bYearFound) {
+            Assert.fail("Year " + sYear + " wasn't found");
         }
     }
 
