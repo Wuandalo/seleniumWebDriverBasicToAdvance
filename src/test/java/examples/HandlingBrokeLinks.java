@@ -15,15 +15,12 @@ import java.net.URL;
 import java.time.Duration;
 import java.util.List;
 
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
 public class HandlingBrokeLinks {
 
     private WebDriver driver;
 
     @BeforeMethod
-    public void setUp(){
+    public void setUp() {
         driver = new ChromeDriver();
         driver.get("https://rahulshettyacademy.com/AutomationPractice/");
         driver.manage().window().maximize();
@@ -32,7 +29,7 @@ public class HandlingBrokeLinks {
     }
 
     @AfterMethod
-    public void tearDown(){
+    public void tearDown() {
         driver.quit();
     }
 
@@ -45,13 +42,13 @@ public class HandlingBrokeLinks {
         HttpURLConnection connection;
         SoftAssert a = new SoftAssert();
 
-        for(WebElement link:links){
-            url=link.getAttribute("href");
+        for (WebElement link : links) {
+            url = link.getAttribute("href");
             connection = (HttpURLConnection) new URL(url).openConnection();
             connection.setRequestMethod("HEAD");
             connection.connect();
             response = connection.getResponseCode();
-            a.assertTrue(response<400,"Link "+link.getText()+" is returning "+response);
+            a.assertTrue(response < 400, "Link " + link.getText() + " is returning " + response);
             System.out.println(response);
         }
 

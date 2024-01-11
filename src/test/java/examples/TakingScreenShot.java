@@ -18,20 +18,20 @@ public class TakingScreenShot {
     private WebDriver driver;
 
     @BeforeMethod
-    public void setUp(){
+    public void setUp() {
         driver = new ChromeDriver();
         driver.get("https://www.uol.com.br/");
         driver.manage().window().maximize();
     }
 
     @AfterMethod
-    public void tearDown(){
+    public void tearDown() {
         driver.quit();
     }
 
     @Test
     public void takeScreenShot() throws IOException {
-        File scr = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(scr,new File("C:\\Users\\gusta\\OneDrive\\Imagens\\Capturas de tela\\screenshot.png"));
+        File scr = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(scr, new File("C:\\Users\\gusta\\OneDrive\\Imagens\\Capturas de tela\\screenshot.png"));
     }
 }

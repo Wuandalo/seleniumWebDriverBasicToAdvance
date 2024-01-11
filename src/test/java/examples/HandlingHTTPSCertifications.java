@@ -1,6 +1,5 @@
 package examples;
 
-import org.junit.After;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -20,7 +19,7 @@ public class HandlingHTTPSCertifications {
     private SafariOptions safariOptions;
 
     @BeforeMethod
-    public void setUp(){
+    public void setUp() {
         options = new ChromeOptions();
         options.setAcceptInsecureCerts(true);
         driver = new ChromeDriver(options);
@@ -30,12 +29,12 @@ public class HandlingHTTPSCertifications {
     }
 
     @AfterMethod
-    public void tearDown(){
+    public void tearDown() {
         driver.quit();
     }
 
     @Test
-    public void handlingHttpCertificate(){
+    public void handlingHttpCertificate() {
         System.out.println(driver.getTitle());
     }
 
