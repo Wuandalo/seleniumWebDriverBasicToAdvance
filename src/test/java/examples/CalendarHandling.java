@@ -36,6 +36,9 @@ public class CalendarHandling {
     @Test
     public void gettingTheRightDateOnTheCalendar() throws InterruptedException {
 
+        wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//p[@class='fc-button-label' and text()='Consentir']"))));
+        driver.findElement(By.xpath("//p[@class='fc-button-label' and text()='Consentir']")).click();
+
         String sYear = "2030";
         String sMonth = "October";
         String sDay = "28";

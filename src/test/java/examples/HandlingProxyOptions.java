@@ -21,12 +21,12 @@ public class HandlingProxyOptions {
         options = new ChromeOptions();
         proxy = new Proxy();
 
+        //Desabilitando pop-ups de localização e entre outros ao abrir o navegador
+        options.addArguments("--ignore-certificate-errors");
+
         //Configurando proxy no navegador
         proxy.setHttpProxy("ipadress:4444");
         options.setCapability("proxy", proxy);
-
-        //Desabilitando pop-ups de localização e entre outros ao abrir o navegador
-        options.setExperimentalOption("excluideSwitches", List.of("disable-popup-blocking"));
 
         driver = new ChromeDriver(options);
         driver.get("https://expired.badssl.com/");
